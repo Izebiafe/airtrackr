@@ -5,7 +5,7 @@ import { fetchCitiesWeatherData } from '../redux/slice/weatherSlice';
 import Nav from './Nav';
 import CityWeather from './City/CityWeather';
 import './styles/Weather.css';
-import arrow from './Assets/arrowRight.svg';
+import AfricaWeather from './AfricaWeather';
 
 const Weather = () => {
   const [filteredCities, setFilteredCities] = useState([]);
@@ -14,9 +14,8 @@ const Weather = () => {
   const dispatch = useDispatch();
 
   const handleFilterChange = (filterText) => {
-    // eslint-disable-next-line max-len
-    const filtered = cityData.filter((city) =>
-      city.city.toLowerCase().includes(filterText.toLowerCase())
+    const filtered = cityData.filter(
+      (city) => city.city.toLowerCase().includes(filterText.toLowerCase()),
     );
     setFilteredCities(filtered);
   };
@@ -32,19 +31,21 @@ const Weather = () => {
   }, [cityData]);
 
   return (
-    <div id="main-wrap">
+    <>
       <Nav onFilterChange={handleFilterChange} />
-      <section className="cities flex">
+      <AfricaWeather />
+      <div className="report-head">
+        <p>City Reports</p>
+      </div>
+      <section className="main">
         {filteredCities.map((city) => (
-          <Link className="flex" to={`city/${city.id}`} key={city.id}>
-            <div className="arrow-img">
-              <img className="arrow" src={arrow} alt="arrow" />
-            </div>
+          <Link className="city" to={`city/${city.id}`} key={city.id}>
             <CityWeather city={city.city} aqi={city.data.main.aqi} />
           </Link>
         ))}
       </section>
-    </div>
+
+    </>
   );
 };
 
