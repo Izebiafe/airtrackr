@@ -60,7 +60,7 @@ is a dynamic web-based air tracking app powered by data from openweather API. It
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- Comming soon
+- [🔗 Live Demo Link](https://airtrackr-ten.vercel.app/)
 
 <!-- GETTING STARTED -->
 
